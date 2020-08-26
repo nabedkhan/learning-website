@@ -1,24 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import courseData from '../src/courseData/courses';
+import Header from './Header/Header';
+import Courses from './Courses/Courses';
+import { useState } from 'react';
 
 function App() {
+
+  const [carts, setCart] = useState([]);
+  const btnEventHandler = (course) => {
+    const newCarts = [...carts, course];
+    setCart(newCarts);
+  }
+
+  const [btnText, setBtnText] = useState('Enroll Now');
+  const changeBtnText = (text) => {
+    const newBtnText = text;
+    setBtnText(newBtnText);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header carts={carts}></Header>
+
+      <div className="container mt-5">
+        <div className="row">
+          {
+            courseData.map(courses =>
+              <Courses courses={courses} btnEventHandler={btnEventHandler}
+                key={courses.id}>
+              </Courses>)
+          }
+        </div>
+      </div>
     </div>
   );
 }

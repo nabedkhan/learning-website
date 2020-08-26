@@ -1,0 +1,22 @@
+.header img {
+    width: 30%;
+}
+
+.header #dropdown-basic {
+    padding: 10px 20px;
+    background-color: #EA5252;
+    border: none;
+}
+
+.header #dropdown-basic:focus {
+    box-shadow: none;
+}
+
+.header .icon {
+    font-size: 30px;
+}
+
+.dropdown-item {
+    font-size: 18px;
+    color: #EA5252;
+}
